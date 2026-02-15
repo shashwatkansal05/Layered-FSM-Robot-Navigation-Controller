@@ -1,14 +1,16 @@
 # Layered-FSM-Robot-Navigation-Controller
-Overview
+
+# Overview
 
 This project implements a robot navigation controller in C using a layered finite state machine (FSM) architecture.
 
 The objective was to design firmware-style control logic instead of writing a monolithic loop-based program. The system is event-driven and modular, separating behavior logic from environment simulation.
 
 The robot operates in a terminal-based simulated environment and demonstrates reactive navigation with mode control and obstacle handling.
+
 ---
 
-Architecture
+# Architecture
 
 The system is divided into independent modules:
 
@@ -58,18 +60,18 @@ Actuator output (visualization)
 This layer is independent of firmware logic and acts as a test harness.
 
 ---
-Project Structure
+# Project Structure
 
-main.c
-event_queue.c / event_queue.h
-motion_fsm.c / motion_fsm.h
-mode_fsm.c / mode_fsm.h
-world_sim.c
-action.h
-event.h
+- main.c
+- event_queue.c / event_queue.h
+- motion_fsm.c / motion_fsm.h
+- mode_fsm.c / mode_fsm.h
+- world_sim.c
+- action.h
+- event.h
 
 ---
-MODE FSM STATE TABLE
+# MODE FSM STATE TABLE
 
 | Current State | Event             | Next State | Action         |
 | ------------- | ----------------- | ---------- | -------------- |
@@ -78,7 +80,7 @@ MODE FSM STATE TABLE
 | AUTO          | Other Events      | AUTO       | No change      |
 | MANUAL        | Other Events      | MANUAL     | Ignore         |
 
-MOTION FSM STATE TABLE
+# MOTION FSM STATE TABLE
 
 | Current State | Event          | Next State   | Action       |
 | ------------- | -------------- | ------------ | ------------ |
@@ -89,7 +91,7 @@ MOTION FSM STATE TABLE
 
 ---
 
-Behavioral Summary
+# Behavioral Summary
 
 The Mode FSM operates at a higher level and can disable motion execution.
 
